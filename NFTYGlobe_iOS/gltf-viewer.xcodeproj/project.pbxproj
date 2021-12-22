@@ -8,34 +8,51 @@
 
 /* Begin PBXBuildFile section */
 		00101E55E74547D6C2FD8C03 /* default_env_ibl.ktx in Resources */ = {isa = PBXBuildFile; fileRef = A027015F6F283E92C379F0B1 /* default_env_ibl.ktx */; };
+		11D8B644E73BCD90A3D19F8D /* libPods-gltf-viewer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DED3F6B2E569C6B6E8ED3AD /* libPods-gltf-viewer.a */; };
 		1297B48507BF2849751AE0E6 /* FILViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B5A2C1598614ED63098A783 /* FILViewController.mm */; };
 		285A74424AF5E3014363F8E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14BA4B8B6A697847DA9934D2 /* Main.storyboard */; };
 		453F7CCB3A029F9604857C1C /* FILModelView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1F16324F2F287CB27E1A84EB /* FILModelView.mm */; };
 		45F28F70A616F4B5C67FEC66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF545E3F8FD553E334F5D6D6 /* Assets.xcassets */; };
 		4FE0C24C9B962C9F7439C9D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF7EE9D5DD74F1A740C0D88 /* main.m */; };
-		58EBAAC97B7EA63E102CDCDB /* BusterDrone in Resources */ = {isa = PBXBuildFile; fileRef = 7F78E613984102280C822052 /* BusterDrone */; };
 		5C706EF98086B64B4CB3EF9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A866F9B1B8D315E88D3D12 /* AppDelegate.m */; };
 		8A03666082048B85BDE1C1CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CA7296309BBFADBB0B00C3 /* LaunchScreen.storyboard */; };
 		A7C7D42BDE57B77CB9D9C5D2 /* default_env_skybox.ktx in Resources */ = {isa = PBXBuildFile; fileRef = 5271315876D6BC61346DFD97 /* default_env_skybox.ktx */; };
+		E6F166352772F91800A40F2C /* BusterDrone in Resources */ = {isa = PBXBuildFile; fileRef = E6F166342772F91800A40F2C /* BusterDrone */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03A535A718B2F64A70C5F231 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		14E68643EDE6EA93F996486E /* Pods-gltf-viewer.opengl release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gltf-viewer.opengl release.xcconfig"; path = "Target Support Files/Pods-gltf-viewer/Pods-gltf-viewer.opengl release.xcconfig"; sourceTree = "<group>"; };
 		1ED9318FEC158171D99C0857 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F16324F2F287CB27E1A84EB /* FILModelView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FILModelView.mm; sourceTree = "<group>"; };
 		1FF7EE9D5DD74F1A740C0D88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B973C3E0FE0EEED37D41D32 /* FILModelView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILModelView.h; sourceTree = "<group>"; };
 		3B5A2C1598614ED63098A783 /* FILViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FILViewController.mm; sourceTree = "<group>"; };
 		5271315876D6BC61346DFD97 /* default_env_skybox.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = default_env_skybox.ktx; sourceTree = "<group>"; };
+		5608CEA7D5CBD0814730F507 /* Pods-gltf-viewer.opengl debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gltf-viewer.opengl debug.xcconfig"; path = "Target Support Files/Pods-gltf-viewer/Pods-gltf-viewer.opengl debug.xcconfig"; sourceTree = "<group>"; };
+		5E8473B51D94675907DE3ED4 /* Pods-gltf-viewer.metal release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gltf-viewer.metal release.xcconfig"; path = "Target Support Files/Pods-gltf-viewer/Pods-gltf-viewer.metal release.xcconfig"; sourceTree = "<group>"; };
 		6E6BB885F2B193E786CD9F14 /* FILViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FILViewController.h; sourceTree = "<group>"; };
-		7F78E613984102280C822052 /* BusterDrone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BusterDrone; path = ../../../third_party/models/BusterDrone; sourceTree = SOURCE_ROOT; };
 		9ADEA6DE7305D0B8CCFFA53D /* gltf-viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gltf-viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DED3F6B2E569C6B6E8ED3AD /* libPods-gltf-viewer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gltf-viewer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A027015F6F283E92C379F0B1 /* default_env_ibl.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = default_env_ibl.ktx; sourceTree = "<group>"; };
 		A0A866F9B1B8D315E88D3D12 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B9C391BBD90EB54D27F8E4FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BB63C6E8EEE5B916025970F4 /* Pods-gltf-viewer.metal debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gltf-viewer.metal debug.xcconfig"; path = "Target Support Files/Pods-gltf-viewer/Pods-gltf-viewer.metal debug.xcconfig"; sourceTree = "<group>"; };
 		C7ECAA95F4A55C69B948F806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF545E3F8FD553E334F5D6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6F166342772F91800A40F2C /* BusterDrone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BusterDrone; path = ../external/models/BusterDrone; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B4CF77693D56225AA3E4516 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11D8B644E73BCD90A3D19F8D /* libPods-gltf-viewer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		2678CEA2FDBFE6D6DC1D4D71 /* gltf-viewer */ = {
@@ -60,6 +77,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3C7BCC8C41F382738065C940 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9DED3F6B2E569C6B6E8ED3AD /* libPods-gltf-viewer.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4904A2B5EF7E75CE42E88D69 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,13 +97,26 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
+		674EBC3826BF4A94FA21C1B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BB63C6E8EEE5B916025970F4 /* Pods-gltf-viewer.metal debug.xcconfig */,
+				5E8473B51D94675907DE3ED4 /* Pods-gltf-viewer.metal release.xcconfig */,
+				5608CEA7D5CBD0814730F507 /* Pods-gltf-viewer.opengl debug.xcconfig */,
+				14E68643EDE6EA93F996486E /* Pods-gltf-viewer.opengl release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7DB4500696DB13904CDF40C4 = {
 			isa = PBXGroup;
 			children = (
-				7F78E613984102280C822052 /* BusterDrone */,
+				E6F166342772F91800A40F2C /* BusterDrone */,
 				E102A6C527928715EF7B0497 /* default_env */,
 				2678CEA2FDBFE6D6DC1D4D71 /* gltf-viewer */,
 				3BFD6EBD6D97D6F1C40F1C90 /* Products */,
+				674EBC3826BF4A94FA21C1B2 /* Pods */,
+				3C7BCC8C41F382738065C940 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9DE609B1909C6A9AF36094D /* Build configuration list for PBXNativeTarget "gltf-viewer" */;
 			buildPhases = (
+				179267265C80708E2C021B3A /* [CP] Check Pods Manifest.lock */,
 				0B375996CE4EBC4A5B258C27 /* Build Resources */,
 				C8F38C978C83CD5335A21F72 /* Sources */,
 				7D3B1B99EEAFB6F53ECBAA5A /* Resources */,
+				0B4CF77693D56225AA3E4516 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +169,7 @@
 				en,
 			);
 			mainGroup = 7DB4500696DB13904CDF40C4;
+			productRefGroup = 3BFD6EBD6D97D6F1C40F1C90 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -142,8 +183,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6F166352772F91800A40F2C /* BusterDrone in Resources */,
 				45F28F70A616F4B5C67FEC66 /* Assets.xcassets in Resources */,
-				58EBAAC97B7EA63E102CDCDB /* BusterDrone in Resources */,
 				8A03666082048B85BDE1C1CE /* LaunchScreen.storyboard in Resources */,
 				285A74424AF5E3014363F8E6 /* Main.storyboard in Resources */,
 				00101E55E74547D6C2FD8C03 /* default_env_ibl.ktx in Resources */,
@@ -162,7 +203,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../../../third_party/environments/lightroom_14b.hdr",
+				"$(SRCROOT)/../external/environments/lightroom_14b.hdr",
 			);
 			name = "Build Resources";
 			outputFileListPaths = (
@@ -173,7 +214,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/usr/bin/env/bash\n\nset -e\n\n# Compile resources.\n\n# The gltf-viewer app requires two resources:\n# 1. The IBL image\n# 2. The skybox image\n\nHOST_TOOLS_PATH=\"${HOST_TOOLS_PATH:-../../../out/release/filament/bin}\"\n\ncmgen_path=`find ${HOST_TOOLS_PATH} -name cmgen -type f | head -n 1`\n\n# Ensure that the required tools are present in the out/ directory.\n# These can be built by running ./build.sh -p desktop -i release at Filament's root directory.\n\nif [[ ! -e \"${cmgen_path}\" ]]; then\n  echo \"No cmgen binary could be found in ${HOST_TOOLS_PATH}.\"\n  echo \"Ensure Filament has been built/installed before building this app.\"\n  exit 1\nfi\n\n# cmgen consumes an HDR environment map and generates two mipmapped KTX files (IBL and skybox)\n\"${cmgen_path}\" \\\n    --deploy=\"${PROJECT_DIR}/generated/default_env\" \\\n    --format=ktx --size=256 --extract-blur=0.1 \\\n    \"${PROJECT_DIR}/../../../third_party/environments/lightroom_14b.hdr\"\n";
+			shellScript = "#/usr/bin/env/bash\n\nset -e\n\n# Compile resources.\n\n# The gltf-viewer app requires two resources:\n# 1. The IBL image\n# 2. The skybox image\n\nHOST_TOOLS_PATH=\"${HOST_TOOLS_PATH:-../tools/filament/bin}\"\n\ncmgen_path=`find ${HOST_TOOLS_PATH} -name cmgen -type f | head -n 1`\n\n# Ensure that the required tools are present in the out/ directory.\n# These can be built by running ./build.sh -p desktop -i release at Filament's root directory.\n\nif [[ ! -e \"${cmgen_path}\" ]]; then\n  echo \"No cmgen binary could be found in ${HOST_TOOLS_PATH}.\"\n  echo \"Ensure Filament has been built/installed before building this app.\"\n  exit 1\nfi\n\n# cmgen consumes an HDR environment map and generates two mipmapped KTX files (IBL and skybox)\n\"${cmgen_path}\" \\\n    --deploy=\"${PROJECT_DIR}/generated/default_env\" \\\n    --format=ktx --size=256 --extract-blur=0.1 \\\n    \"${PROJECT_DIR}/../external/environments/lightroom_14b.hdr\"\n";
+		};
+		179267265C80708E2C021B3A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gltf-viewer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -385,6 +448,7 @@
 		};
 		8FDE7F5CD5FA800D52917373 /* Metal Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E8473B51D94675907DE3ED4 /* Pods-gltf-viewer.metal release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -395,7 +459,7 @@
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"../../../out/ios-release/filament/include",
+					"../external/filamentlib-1.12.11/ios-debug/filament/include",
 					generated,
 				);
 				INFOPLIST_FILE = "gltf-viewer/SupportFiles/Info.plist";
@@ -405,8 +469,8 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"../../../out/ios-release/filament/lib/$(CURRENT_ARCH)",
-					"../../../out/ios-release/filament/lib/universal",
+					"../external/filamentlib-1.12.11/ios-release/filament/lib/$(CURRENT_ARCH)",
+					"../external/filamentlib-1.12.11/ios-release/filament/lib/universal",
 				);
 				OTHER_LDFLAGS = (
 					"-lfilament",
@@ -429,11 +493,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = "Metal Release";
 		};
 		9CA3515D91333909CD545D91 /* Metal Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB63C6E8EEE5B916025970F4 /* Pods-gltf-viewer.metal debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -444,7 +510,7 @@
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"../../../out/ios-debug/filament/include",
+					"../external/filamentlib-1.12.11/ios-debug/filament/include",
 					generated,
 				);
 				INFOPLIST_FILE = "gltf-viewer/SupportFiles/Info.plist";
@@ -454,8 +520,8 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"../../../out/ios-debug/filament/lib/$(CURRENT_ARCH)",
-					"../../../out/ios-debug/filament/lib/universal",
+					"../external/filamentlib-1.12.11/ios-debug/filament/lib/$(CURRENT_ARCH)",
+					"../external/filamentlib-1.12.11/ios-debug/filament/lib/universal",
 				);
 				OTHER_LDFLAGS = (
 					"-lfilament",
@@ -478,6 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = "Metal Debug";
 		};
@@ -545,6 +612,7 @@
 		};
 		DEEA1EF36DA04AB052462DD0 /* OpenGL Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 14E68643EDE6EA93F996486E /* Pods-gltf-viewer.opengl release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -555,7 +623,7 @@
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"../../../out/ios-release/filament/include",
+					"../external/filamentlib-1.12.11/ios-debug/filament/include",
 					generated,
 				);
 				INFOPLIST_FILE = "gltf-viewer/SupportFiles/Info.plist";
@@ -565,8 +633,8 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"../../../out/ios-release/filament/lib/$(CURRENT_ARCH)",
-					"../../../out/ios-release/filament/lib/universal",
+					"../external/filamentlib-1.12.11/ios-release/filament/lib/$(CURRENT_ARCH)",
+					"../external/filamentlib-1.12.11/ios-release/filament/lib/universal",
 				);
 				OTHER_LDFLAGS = (
 					"-lfilament",
@@ -589,11 +657,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = "OpenGL Release";
 		};
 		ECF5979730D72F53BD997A40 /* OpenGL Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5608CEA7D5CBD0814730F507 /* Pods-gltf-viewer.opengl debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -604,7 +674,7 @@
 					"$(inherited)",
 				);
 				HEADER_SEARCH_PATHS = (
-					"../../../out/ios-debug/filament/include",
+					"../external/filamentlib-1.12.11/ios-debug/filament/include",
 					generated,
 				);
 				INFOPLIST_FILE = "gltf-viewer/SupportFiles/Info.plist";
@@ -614,8 +684,8 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = (
-					"../../../out/ios-debug/filament/lib/$(CURRENT_ARCH)",
-					"../../../out/ios-debug/filament/lib/universal",
+					"../external/filamentlib-1.12.11/ios-debug/filament/lib/$(CURRENT_ARCH)",
+					"../external/filamentlib-1.12.11/ios-debug/filament/lib/universal",
 				);
 				OTHER_LDFLAGS = (
 					"-lfilament",
@@ -638,6 +708,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = "OpenGL Debug";
 		};

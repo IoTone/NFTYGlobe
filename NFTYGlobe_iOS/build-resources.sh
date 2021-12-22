@@ -8,7 +8,7 @@ set -e
 # 1. The IBL image
 # 2. The skybox image
 
-HOST_TOOLS_PATH="${HOST_TOOLS_PATH:-../../../out/release/filament/bin}"
+HOST_TOOLS_PATH="${HOST_TOOLS_PATH:-../tools/filament/bin}"
 
 cmgen_path=`find ${HOST_TOOLS_PATH} -name cmgen -type f | head -n 1`
 
@@ -25,4 +25,4 @@ fi
 "${cmgen_path}" \
     --deploy="${PROJECT_DIR}/generated/default_env" \
     --format=ktx --size=256 --extract-blur=0.1 \
-    "${PROJECT_DIR}/../../../third_party/environments/lightroom_14b.hdr"
+    "${PROJECT_DIR}/../external/environments/lightroom_14b.hdr"

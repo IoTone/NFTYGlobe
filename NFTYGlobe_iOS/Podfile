@@ -1,5 +1,6 @@
 platform :ios, '11.0'
 
-target 'HelloCocoaPods' do
-    pod 'Filament'
+target 'gltf-viewer' do
+    pod 'Hover'
+    # pod 'Filament', '1.12.11'
 end
