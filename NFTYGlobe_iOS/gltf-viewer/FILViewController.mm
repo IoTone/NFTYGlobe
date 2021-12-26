@@ -80,6 +80,38 @@ using namespace utils;
         }
     }
 
+    //
+    // based on https://stackoverflow.com/a/29565794/796514
+    // if saving JSON: https://stackoverflow.com/a/17488068/796514
+    // Try fetching from opensea:
+    NSString *documentDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    // Path and name to save as
+    NSString *filePath = [documentDir stringByAppendingPathComponent:@"nft.gltf"];
+
+    // URL to request from
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://storage.opensea.io/files/c494cc38d78d112f497ba4abb84d31ea.gltf"]];
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@">> Download Error:%@",error.description);
+        }
+        if (data) {
+            [data writeToFile:filePath atomically:YES];
+            NSLog(@">> File is saved to %@, loading",filePath);
+            bool dlexists=[[NSFileManager defaultManager] fileExistsAtPath:filePath];
+
+            if (dlexists) {
+                NSLog(@">> File exists");
+            } else {
+                NSLog(@">> Error File does not exist");
+            }
+            [self createRenderablesFromAbsPath:filePath];
+            [self createLights];
+            
+            // _server = new viewer::RemoteServer();
+            // _automation = viewer::AutomationEngine::createDefault();
+        }
+    }];
+    
     if (modelPath) {
         [self createRenderablesFromPath:modelPath];
     } else {
@@ -143,6 +175,35 @@ using namespace utils;
     }
 
     self.title = model;
+    [self.modelView transformToUnitCube];
+}
+
+- (void)createRenderablesFromAbsPath:(NSString*)filePath {
+    // Retrieve the full path to the model in the documents directory.
+
+    NSString* path = filePath;
+
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSLog(@"Error: no file exists at %@", path);
+        return;
+    }
+
+    NSData* buffer = [NSData dataWithContentsOfFile:path];
+    if ([path hasSuffix:@".glb"]) {
+        [self.modelView loadModelGlb:buffer];
+    } else if ([path hasSuffix:@".gltf"]) {
+        NSString* parentDirectory = [path stringByDeletingLastPathComponent];
+        [self.modelView loadModelGltf:buffer
+                             callback:^NSData*(NSString* uri) {
+                                 NSString* p = [parentDirectory stringByAppendingPathComponent:uri];
+                                 return [NSData dataWithContentsOfFile:p];
+                             }];
+    } else {
+        NSLog(@"Error: file %@ must have either a .glb or .gltf extension.", path);
+        return;
+    }
+
+    self.title = path;
     [self.modelView transformToUnitCube];
 }
 

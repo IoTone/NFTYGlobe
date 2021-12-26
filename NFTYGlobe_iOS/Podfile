@@ -3,4 +3,5 @@ platform :ios, '11.0'
 target 'gltf-viewer' do
     pod 'Hover'
     # pod 'Filament', '1.12.11'
+    pod 'Reveal-SDK', :configurations => ['metal debug', 'opengl debug']
 end
