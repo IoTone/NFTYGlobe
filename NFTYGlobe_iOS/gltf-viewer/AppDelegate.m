@@ -15,6 +15,7 @@
  */
 
 #import "AppDelegate.h"
+#import <CoreNFC/CoreNFC.h>
 
 @interface AppDelegate ()
 

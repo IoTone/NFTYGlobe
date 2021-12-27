@@ -40,6 +40,7 @@
 		BB63C6E8EEE5B916025970F4 /* Pods-gltf-viewer.metal debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gltf-viewer.metal debug.xcconfig"; path = "Target Support Files/Pods-gltf-viewer/Pods-gltf-viewer.metal debug.xcconfig"; sourceTree = "<group>"; };
 		C7ECAA95F4A55C69B948F806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF545E3F8FD553E334F5D6D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E69C7BA727797C3200B1021D /* gltf-viewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "gltf-viewer.entitlements"; sourceTree = "<group>"; };
 		E6F166342772F91800A40F2C /* BusterDrone */ = {isa = PBXFileReference; lastKnownFileType = folder; name = BusterDrone; path = ../external/models/BusterDrone; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +59,7 @@
 		2678CEA2FDBFE6D6DC1D4D71 /* gltf-viewer */ = {
 			isa = PBXGroup;
 			children = (
+				E69C7BA727797C3200B1021D /* gltf-viewer.entitlements */,
 				03A535A718B2F64A70C5F231 /* AppDelegate.h */,
 				A0A866F9B1B8D315E88D3D12 /* AppDelegate.m */,
 				2B973C3E0FE0EEED37D41D32 /* FILModelView.h */,
@@ -469,6 +471,7 @@
 			baseConfigurationReference = 5E8473B51D94675907DE3ED4 /* Pods-gltf-viewer.metal release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "gltf-viewer/gltf-viewer.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 65CUCZ558H;
 				ENABLE_BITCODE = NO;
@@ -508,7 +511,7 @@
 					"-lviewer",
 					"-lcivetweb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotone.nfty;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -520,6 +523,7 @@
 			baseConfigurationReference = BB63C6E8EEE5B916025970F4 /* Pods-gltf-viewer.metal debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "gltf-viewer/gltf-viewer.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 65CUCZ558H;
 				ENABLE_BITCODE = NO;
@@ -559,7 +563,7 @@
 					"-lviewer",
 					"-lcivetweb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotone.nfty;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -633,6 +637,7 @@
 			baseConfigurationReference = 14E68643EDE6EA93F996486E /* Pods-gltf-viewer.opengl release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "gltf-viewer/gltf-viewer.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 65CUCZ558H;
 				ENABLE_BITCODE = NO;
@@ -672,7 +677,7 @@
 					"-lviewer",
 					"-lcivetweb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotone.nfty;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -684,6 +689,7 @@
 			baseConfigurationReference = 5608CEA7D5CBD0814730F507 /* Pods-gltf-viewer.opengl debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "gltf-viewer/gltf-viewer.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 65CUCZ558H;
 				ENABLE_BITCODE = NO;
@@ -723,7 +729,7 @@
 					"-lviewer",
 					"-lcivetweb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "google.filament.gltf-viewer";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iotone.nfty;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";

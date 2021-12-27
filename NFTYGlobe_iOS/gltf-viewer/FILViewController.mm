@@ -29,17 +29,21 @@
 
 #include <viewer/AutomationEngine.h>
 #include <viewer/RemoteServer.h>
+#include <CoreNFC/CoreNFC.h>
 
 using namespace filament;
 using namespace utils;
 
-@interface FILViewController ()
-
+@interface FILViewController ()<NFCNDEFReaderSessionDelegate>
+// , NFCReaderSessionDelegate>
 - (void)startDisplayLink;
 - (void)stopDisplayLink;
 
 - (void)createRenderables;
 - (void)createLights;
+
+@property (strong, nonatomic) NFCNDEFReaderSession *session;
+@property (strong, nonatomic) NSMutableArray *dataAry;
 
 @end
 
@@ -56,6 +60,82 @@ using namespace utils;
     Entity _sun;
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+/*
+#pragma mark - NFCReaderSessionDelegate
+- (void)readerSessionDidBecomeActive:(NFCReaderSession *)session
+{
+    NSLog(@"NFC Session Active");
+    if (session.isReady) {
+        NSLog(@"NFC Ready");
+    } else {
+        NSLog(@"NFC Not Ready Yet");
+    }
+}
+
+- (void)readerSession:(NFCReaderSession *)session
+        didDetectTags:(NSArray<__kindof id<NFCTag>> *)tags
+{
+    NSLog(@"NFC Scan TAG Data");
+    
+    if (tags.count > 1) {
+        // TODO: Handle differently
+    }
+    
+    
+}
+*/
+
+#pragma mark - NFCNDEFReaderSessionDelegate
+
+- (void)readerSession:(NFCNDEFReaderSession *)session didInvalidateWithError:(NSError *)error
+{
+    // 读取失败
+    NSLog(@"%@",error);
+    if (error.code == 201) {
+        NSLog(@">>>> NFC Scan Timeout");
+        
+    }
+    
+    if (error.code == 200) {
+        NSLog(@">>>> NFC Cancel Scan");
+    }
+}
+
+- (void)readerSession:(NFCNDEFReaderSession *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages
+{
+    
+    // Success
+    // See a better example here: https://github.com/vinceyuan/VYNFCKit/blob/dbcf214b65e43852a3bbab8a4b2b5ee72661e3c8/Examples/VYNFCKitExampleObjc/VYNFCKitExampleObjc/ViewController.m#L42
+    //
+    for (NFCNDEFMessage *msg in messages) {
+        NSLog(@">>>> NDEF Read Success");
+        NSArray *ary = msg.records;
+        for (NFCNDEFPayload *rec in ary) {
+            
+            NFCTypeNameFormat typeName = rec.typeNameFormat;
+            NSData *payload = rec.payload;
+            NSData *type = rec.type;
+            NSData *identifier = rec.identifier;
+            NSString *strpayload = [[NSString alloc] initWithData:payload encoding:NSUTF8StringEncoding];
+            NSLog(@">>>> TypeName : %d",typeName);
+            NSLog(@">>>> Payload : %@",payload);
+            NSLog(@">>>> String Payload : %@ length=%lu",strpayload, strpayload.length);
+            NSLog(@">>>> Type : %@",type);
+            NSLog(@">>>> Identifier : %@",identifier);
+        }
+    }
+    // TODO: Delay this invalidate by some number of seconds
+    self.session.alertMessage = @"NFTY Tag data loading";
+    [self.session invalidateSession];
+    
+    [self.dataAry addObject:messages];
+}
+
+
 #pragma mark UIViewController methods
 
 - (void)viewDidLoad {
@@ -63,6 +143,8 @@ using namespace utils;
 
     self.title = @"https://google.github.io/filament/remote";
 
+    self.dataAry = [[NSMutableArray alloc] init];
+    
     // Arguments:
     // --model <path>
     //     path to glb or gltf file to load from documents directory
@@ -117,6 +199,21 @@ using namespace utils;
 
     _server = new viewer::RemoteServer();
     _automation = viewer::AutomationEngine::createDefault();
+}
+
+- (IBAction)scanButtonClicked:(id)sender {
+    
+    [self.session invalidateSession];
+
+    self.session = [[NFCNDEFReaderSession alloc] initWithDelegate:self
+                                                            queue:dispatch_get_main_queue()
+                                         invalidateAfterFirstRead:NO];
+    if (NFCNDEFReaderSession.readingAvailable) {
+        self.session.alertMessage = @"Place Tag in scanner area";
+        [self.session beginSession];
+    } else {
+        NSLog(@"This device does not support NFC");
+    }
 }
 
 - (void)loadGLTFDataFromURL:(NSString*)url {
