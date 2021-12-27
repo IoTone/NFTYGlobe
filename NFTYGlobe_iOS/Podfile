@@ -4,4 +4,5 @@ target 'gltf-viewer' do
     pod 'Hover'
     # pod 'Filament', '1.12.11'
     pod 'Reveal-SDK', :configurations => ['metal debug', 'opengl debug']
+    pod 'JSON', '~> 5.0'
 end

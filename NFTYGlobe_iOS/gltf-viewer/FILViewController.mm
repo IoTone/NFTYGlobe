@@ -81,6 +81,46 @@ using namespace utils;
     }
 
     //
+    // Try fetching gltf data from opensea
+    //
+    // TODO: put this into its own function
+    // "https://api.opensea.io/api/v1/asset/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/69049"
+    //
+    // Load the JSON first, URL to request from
+    NSURLRequest *apirequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.opensea.io/api/v1/asset/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/69049"]];
+    [NSURLConnection sendAsynchronousRequest:apirequest queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@">>> Opensea API Error:%@",error.description);
+        }
+        if (data) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            // NSLog(@">>> json :%@",json);
+            NSLog(@">>> %@", json);
+
+            // Parse the response
+             NSString *animation_url = [json valueForKey:@"animation_url"];
+            if (animation_url) {
+                [self loadGLTFDataFromURL:animation_url];
+            } else {
+                NSLog(@">>> Opensea API response missing animation_url, check the contract");
+            }
+        }
+    }];
+
+    
+    if (modelPath) {
+        [self createRenderablesFromPath:modelPath];
+    } else {
+        [self createDefaultRenderables];
+    }
+    [self createLights];
+
+    _server = new viewer::RemoteServer();
+    _automation = viewer::AutomationEngine::createDefault();
+}
+
+- (void)loadGLTFDataFromURL:(NSString*)url {
+    //
     // based on https://stackoverflow.com/a/29565794/796514
     // if saving JSON: https://stackoverflow.com/a/17488068/796514
     // Try fetching from opensea:
@@ -111,16 +151,6 @@ using namespace utils;
             // _automation = viewer::AutomationEngine::createDefault();
         }
     }];
-    
-    if (modelPath) {
-        [self createRenderablesFromPath:modelPath];
-    } else {
-        [self createDefaultRenderables];
-    }
-    [self createLights];
-
-    _server = new viewer::RemoteServer();
-    _automation = viewer::AutomationEngine::createDefault();
 }
 
 - (void)viewWillAppear:(BOOL)animated {
