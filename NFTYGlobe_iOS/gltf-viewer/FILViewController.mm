@@ -108,6 +108,8 @@ using namespace utils;
 - (void)readerSession:(NFCNDEFReaderSession *)session didDetectNDEFs:(NSArray<NFCNDEFMessage *> *)messages
 {
     
+    // TODO: if no messages are available add an alert
+    
     // Success
     // See a better example here: https://github.com/vinceyuan/VYNFCKit/blob/dbcf214b65e43852a3bbab8a4b2b5ee72661e3c8/Examples/VYNFCKitExampleObjc/VYNFCKitExampleObjc/ViewController.m#L42
     //
@@ -120,12 +122,33 @@ using namespace utils;
             NSData *payload = rec.payload;
             NSData *type = rec.type;
             NSData *identifier = rec.identifier;
-            NSString *strpayload = [[NSString alloc] initWithData:payload encoding:NSUTF8StringEncoding];
-            NSLog(@">>>> TypeName : %d",typeName);
-            NSLog(@">>>> Payload : %@",payload);
-            NSLog(@">>>> String Payload : %@ length=%lu",strpayload, strpayload.length);
-            NSLog(@">>>> Type : %@",type);
-            NSLog(@">>>> Identifier : %@",identifier);
+            NSString *rawstrpayload = [[NSString alloc] initWithData:payload encoding:NSUTF8StringEncoding];
+            
+            
+            // Filter out the types, and we will only deal with NDEF typeName
+            // 0x01 (well known type)
+            // https://learn.adafruit.com/adafruit-pn532-rfid-nfc/ndef
+            //
+            if (typeName == 0x01) {
+                // Skip over the language encoding, for more info: https://stackoverflow.com/a/58389670/796514
+                //
+                NSString *strpayload = [rawstrpayload substringFromIndex:3];
+                NSArray *assetdata = [strpayload componentsSeparatedByString:@"/"];
+                NSLog(@">>>> TypeName : %d",typeName);
+                NSLog(@">>>> Payload : %@",payload);
+                NSLog(@">>>> String Payload : %@ length=%lu",strpayload, strpayload.length);
+                NSLog(@">>>> Type : %@",type);
+                NSLog(@">>>> Identifier : %@",identifier);
+                NSLog(@">>>> Loading opensea JSON from NFC tag");
+                if (assetdata.count == 2) {
+                    [self fetchAssetURLfromOpenSeaAsset:assetdata[0] withTokenID:assetdata[1]];
+                } else {
+                    NSLog(@">>>> Problem loading the asset contract/tokenID from NFC tag.  Check the format of the payload.");
+                }
+            } else {
+                // TODO: Alert if the type of NDEF record is not supported
+                NSLog(@">>>> Invalid NDEF typeName found: %d", typeName);
+            }
         }
     }
     // TODO: Delay this invalidate by some number of seconds
@@ -162,32 +185,7 @@ using namespace utils;
         }
     }
 
-    //
-    // Try fetching gltf data from opensea
-    //
-    // TODO: put this into its own function
-    // "https://api.opensea.io/api/v1/asset/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/69049"
-    //
-    // Load the JSON first, URL to request from
-    NSURLRequest *apirequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://api.opensea.io/api/v1/asset/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/69049"]];
-    [NSURLConnection sendAsynchronousRequest:apirequest queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (error) {
-            NSLog(@">>> Opensea API Error:%@",error.description);
-        }
-        if (data) {
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-            // NSLog(@">>> json :%@",json);
-            NSLog(@">>> %@", json);
-
-            // Parse the response
-             NSString *animation_url = [json valueForKey:@"animation_url"];
-            if (animation_url) {
-                [self loadGLTFDataFromURL:animation_url];
-            } else {
-                NSLog(@">>> Opensea API response missing animation_url, check the contract");
-            }
-        }
-    }];
+    
 
     
     if (modelPath) {
@@ -216,7 +214,39 @@ using namespace utils;
     }
 }
 
-- (void)loadGLTFDataFromURL:(NSString*)url {
+- (void)fetchAssetURLfromOpenSeaAsset:(NSString*)assetContract withTokenID:(NSString*)tokenID {
+    //
+    // Try fetching gltf data from opensea
+    //
+    // TODO: put this into its own function
+    // "https://api.opensea.io/api/v1/asset/0x3b3ee1931dc30c1957379fac9aba94d1c48a5405/69049"
+    //
+    // Load the JSON first, URL to request from
+    NSString *apistr = [NSString stringWithFormat: @"https://api.opensea.io/api/v1/asset/%@/%@", assetContract, tokenID];
+    NSLog(@">>> Loading asset data from: %@", apistr);
+    NSURLRequest *apirequest = [NSURLRequest requestWithURL:[NSURL URLWithString:apistr]];
+    [NSURLConnection sendAsynchronousRequest:apirequest queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            NSLog(@">>> Opensea API Error:%@",error.description);
+        }
+        if (data) {
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+            // NSLog(@">>> json :%@",json);
+            NSLog(@">>> %@", json);
+
+            // Parse the response
+             NSString *animation_url = [json valueForKey:@"animation_url"];
+            if (animation_url) {
+                [self loadGLTFDataFromURL:animation_url];
+            } else {
+                NSLog(@">>> Opensea API response missing animation_url, check the contract");
+                // XXX: TODO: add an alert to warn of a missing animation_url
+            }
+        }
+    }];
+}
+
+- (void)loadGLTFDataFromURL:(NSString*)asseturl {
     //
     // based on https://stackoverflow.com/a/29565794/796514
     // if saving JSON: https://stackoverflow.com/a/17488068/796514
@@ -226,7 +256,7 @@ using namespace utils;
     NSString *filePath = [documentDir stringByAppendingPathComponent:@"nft.gltf"];
 
     // URL to request from
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://storage.opensea.io/files/c494cc38d78d112f497ba4abb84d31ea.gltf"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:asseturl]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue currentQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             NSLog(@">> Download Error:%@",error.description);
