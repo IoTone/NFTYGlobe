@@ -1,6 +1,9 @@
 # NFTYGlobe
 An NFC-based NFT Viewer for Opensea.io : A hardware + software project
 
+Demo: https://1drv.ms/v/s!AuIL2jCvMCqRgp5Y2U7wrm_aMuciMQ?e=sRZJJm
+also: https://1drv.ms/v/s!AuIL2jCvMCqRgp5XjitcwdyHgB-d3g?e=6jeBTw
+
 ## Building
 
 There are external dependencies that need to be snarfed from the external 
@@ -26,4 +29,6 @@ TODO: Add details on the tag setup
 Setting up a viewer is optional.  The tags can be viewed directly on the phone.
 To make a more interesting viewer, use a projector.  
 
-TODO: Add the details on the setup and assembly of a design.
+- The viewer is built from a light bulb head (a FEIT bulb of some kind, pop off the plastic dome part; TODO add the model))
+- A cardboard tube used for shipping (TODO: get the dimensions and diameter)
+- The projector: a polaroid mini HDMI projector that is sub $200 on amazon
