@@ -32,3 +32,4 @@ To make a more interesting viewer, use a projector.
 - The viewer is built from a light bulb head (a FEIT bulb of some kind, pop off the plastic dome part; TODO add the model))
 - A cardboard tube used for shipping (TODO: get the dimensions and diameter)
 - The projector: a polaroid mini HDMI projector that is sub $200 on amazon
+- NFC tags: I buy mine from tagstand.com (TODO: write up specs for configuring NFC tags)
